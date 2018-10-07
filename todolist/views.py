@@ -19,8 +19,8 @@ def list(request):
     # data = serializers.serialize("json", list)
     return HttpResponse(json.dumps({'code':1,"data": tmpList}), content_type='application/json')
     # return HttpResponse(list)
-def add(request,content,done):
-    newItem = Item(content=content,done=done)
+def add(request,content):
+    newItem = Item(content=content,done=0)
     newItem.save()
     print(newItem.id)
     return HttpResponse(json.dumps({"code": 1,"id":newItem.id}), content_type='application/json')
